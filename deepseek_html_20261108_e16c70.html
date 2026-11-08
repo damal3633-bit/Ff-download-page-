@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Tournament - Download</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@800;900&family=Montserrat:wght@600;800;900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= CSS START ================= */
+        :root {
+            --primary-red: #ff1a1a;
+            --dark-red: #8b0000;
+            --deep-black: #0a0000;
+            --gold: #ffd700;
+            --gold-dark: #b8860b;
+            --fire-orange: #ff4500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+            background-image: 
+                linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Main Container */
+        .premium-page {
+            width: 420px;
+            height: 850px;
+            background: radial-gradient(circle at top center, #2a0000 0%, #050000 70%);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #330000;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.15), inset 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        /* Background Glowing Orbs */
+        .premium-page::before {
+            content: '';
+            position: absolute;
+            top: 5%;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 1;
+        }
+
+        /* Top Logo Area */
+        .top-icon-area {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Custom Logo Container */
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #1a0505, #0d0000);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid var(--gold);
+            box-shadow: 
+                0 0 25px rgba(255, 0, 0, 0.6), 
+                inset 0 0 20px rgba(255, 0, 0, 0.4),
+                0 15px 25px rgba(0,0,0,0.8);
+            overflow: hidden;
+            padding: 5px;
+        }
+
+        /* Image CSS */
+        .custom-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        /* Text Area */
+        .text-area {
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        /* Premium 3D Text Effect */
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 38px;
+            font-weight: 900;
+            color: #ff1a1a;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0px;
+            text-shadow: 
+                0 1px 0 #cc0000,
+                0 2px 0 #b30000,
+                0 3px 0 #990000,
+                0 4px 0 #800000,
+                0 5px 0 #660000,
+                0 6px 1px rgba(0,0,0,0.1),
+                0 0 5px rgba(0,0,0,0.1),
+                0 1px 3px rgba(0,0,0,0.3),
+                0 3px 5px rgba(0,0,0,0.2),
+                0 5px 10px rgba(0,0,0,0.25),
+                0 10px 10px rgba(0,0,0,0.2);
+        }
+
+        .sub-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 28px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(255, 215, 0, 0.4);
+            margin-bottom: 10px;
+        }
+
+        /* ================= FIRE ANIMATION CSS START ================= */
+        .fire-animation-container {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            margin-bottom: 10px;
+        }
+
+        /* Glowing Rings */
+        .fire-ring {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 69, 0, 0.6);
+            animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .fire-ring.ring2 {
+            animation-delay: 1s;
+        }
+
+        /* Main Fire Icon */
+        .fire-icon {
+            font-size: 55px;
+            color: var(--fire-orange);
+            position: relative;
+            z-index: 2;
+            animation: flicker 1s infinite alternate, float 2.5s ease-in-out infinite;
+        }
+
+        /* Glowing Base */
+        .fire-base {
+            position: absolute;
+            bottom: 15px;
+            width: 90px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, rgba(255, 69, 0, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(5px);
+            animation: pulse-base 1s infinite alternate;
+        }
+
+        /* Sparks (Flying Particles) */
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--fire-orange);
+            opacity: 0;
+        }
+        .spark.s1 { bottom: 20px; left: 42%; animation: rise 1.5s infinite; }
+        .spark.s2 { bottom: 10px; left: 58%; animation: rise 1.8s infinite 0.4s; }
+        .spark.s3 { bottom: 25px; left: 35%; animation: rise 1.6s infinite 0.8s; }
+        .spark.s4 { bottom: 15px; left: 65%; animation: rise 2s infinite 1.2s; }
+
+        /* Keyframes for Fire Animation */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.5); opacity: 1; border-color: rgba(255, 69, 0, 0.8); }
+            100% { transform: scale(2); opacity: 0; border-color: rgba(255, 215, 0, 0); }
+        }
+
+        @keyframes flicker {
+            0% { color: #ff1a1a; filter: drop-shadow(0 0 10px #ff4500) drop-shadow(0 0 20px #ffd700); }
+            100% { color: var(--gold); filter: drop-shadow(0 0 20px #ff1a1a) drop-shadow(0 0 40px #ff8c00); }
+        }
+
+        @keyframes pulse-base {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-60px) scale(0); opacity: 0; }
+        }
+        /* ================= FIRE ANIMATION CSS END ================= */
+
+        /* 3D Info Cards Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 88%;
+            z-index: 10;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: linear-gradient(145deg, #1a0505, #0d0000);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #4a0000;
+            border-bottom: 4px solid #330000;
+            border-right: 4px solid #330000;
+            box-shadow: 
+                -2px -2px 5px rgba(255, 50, 50, 0.1),
+                3px 3px 10px rgba(0,0,0,0.8),
+                inset 0 0 10px rgba(255,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                -2px -2px 8px rgba(255, 50, 50, 0.2),
+                5px 5px 15px rgba(0,0,0,0.9),
+                inset 0 0 15px rgba(255,0,0,0.2);
+        }
+
+        .info-card .icon-wrapper {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 2px 5px rgba(255,255,255,0.3), 0 5px 10px rgba(0,0,0,0.5);
+        }
+
+        .info-card .icon-wrapper i {
+            color: #fff;
+            font-size: 18px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-text {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 1px 2px #000;
+        }
+
+        .bottom-text {
+            color: #ff8080;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Premium 3D Button */
+        .btn-container {
+            z-index: 10;
+            width: 88%;
+            margin-top: auto;
+            margin-bottom: 20px;
+            perspective: 1000px;
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 16px 0;
+            font-family: 'Teko', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            position: relative;
+            background: linear-gradient(to bottom, #ff3333 0%, #cc0000 50%, #800000 100%);
+            box-shadow: 
+                0 8px 0 #4a0000, 
+                0 15px 25px rgba(0,0,0,0.8), 
+                inset 0 2px 2px rgba(255,255,255,0.6), 
+                inset 0 -3px 5px rgba(0,0,0,0.5); 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.1s ease;
+            transform-style: preserve-3d;
+        }
+
+        /* Gold Border Effect */
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            z-index: -1;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Button Click (Press Down) Effect */
+        .download-btn:active {
+            transform: translateY(6px);
+            box-shadow: 
+                0 2px 0 #4a0000, 
+                0 5px 10px rgba(0,0,0,0.8), 
+                inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .download-btn i {
+            font-size: 26px;
+            color: var(--gold);
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+            animation: pulse-icon 1.5s infinite;
+        }
+
+        /* Footer Security Badge */
+        .footer-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 6px 15px;
+            border-radius: 30px;
+            border: 1px solid #330000;
+            z-index: 10;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .footer-badge i {
+            color: #00ff00;
+            font-size: 12px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+
+        .footer-badge span {
+            color: #ccc;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ================= CSS END ================= */
+    </style>
+</head>
+<body>
+
+    <div class="premium-page">
+        
+        <!-- Top Logo Area -->
+        <div class="top-icon-area">
+            <div class="logo-container">
+                <img src="logo.png" alt="Free Fire Logo" class="custom-logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5969/5969196.png';">
+            </div>
+        </div>
+
+        <!-- Text Area -->
+        <div class="text-area">
+            <h1 class="main-title">FREE FIRE</h1>
+            <h2 class="sub-title">TOURNAMENT</h2>
+        </div>
+
+        <!-- ================= FIRE ANIMATION HTML START ================= -->
+        <div class="fire-animation-container">
+            <div class="fire-ring"></div>
+            <div class="fire-ring ring2"></div>
+            <i class="fa-solid fa-fire fire-icon"></i>
+            <div class="fire-base"></div>
+            
+            <!-- Flying Sparks -->
+            <div class="spark s1"></div>
+            <div class="spark s2"></div>
+            <div class="spark s3"></div>
+            <div class="spark s4"></div>
+        </div>
+        <!-- ================= FIRE ANIMATION HTML END ================= -->
+
+        <!-- 3D Info Grid -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <i class="fa-regular fa-calendar-days"></i>
+                </div>
+                <div class="info-text">
+                    <span class="top-text">Nov 8</span>
+                    <span class="bottom-text">UPDATED</span>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                </div>
+                <div class="info-text">
+                    <span class="top-text">15.0 MB</span>
+                    <span class="bottom-text">SIZE</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="info-text">
+                    <span class="top-text">v1.0.0</span>
+                    <span class="bottom-text">ACTION</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <i class="fa-brands fa-android"></i>
+                </div>
+                <div class="info-text">
+                    <span class="top-text">Android 6+</span>
+                    <span class="bottom-text">REQ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium 3D Button -->
+        <div class="btn-container">
+            <button class="download-btn" id="downloadBtn">
+                <i class="fa-solid fa-download"></i> DOWNLOAD APK
+            </button>
+        </div>
+
+        <!-- Footer Badge -->
+        <div class="footer-badge">
+            <i class="fa-solid fa-lock"></i>
+            <span>100% SECURE & SAFE</span>
+        </div>
+
+    </div>
+
+    <!-- ================= JAVASCRIPT START ================= -->
+    <script>
+        const btn = document.getElementById('downloadBtn');
+
+        btn.addEventListener('click', function() {
+            // Change button state to show loading
+            this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> DOWNLOADING...';
+            this.style.background = 'linear-gradient(to bottom, #666 0%, #333 50%, #000 100%)'; 
+            this.style.boxShadow = '0 8px 0 #111, 0 15px 25px rgba(0,0,0,0.8), inset 0 2px 2px rgba(255,255,255,0.2)';
+            
+            // Trigger download after 1 second
+            setTimeout(() => {
+                
+                // এখানে আপনার APK ফাইলের নাম/লিংক বসানো আছে
+                window.location.href = "FF_Tournament.apk"; 
+                
+                // Reset button after download starts
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fa-solid fa-download"></i> DOWNLOAD APK';
+                    this.style.background = 'linear-gradient(to bottom, #ff3333 0%, #cc0000 50%, #800000 100%)';
+                    this.style.boxShadow = '0 8px 0 #4a0000, 0 15px 25px rgba(0,0,0,0.8), inset 0 2px 2px rgba(255,255,255,0.6), inset 0 -3px 5px rgba(0,0,0,0.5)';
+                }, 3000);
+
+            }, 1000); 
+        });
+    </script>
+    <!-- ================= JAVASCRIPT END ================= -->
+
+</body>
+</html>
